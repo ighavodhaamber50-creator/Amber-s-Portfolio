@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amber's Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Reset & Fonts ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== Colors ===== */
+    :root {
+      --primary: #1f2937;
+      --secondary: #10b981;
+      --accent: #6b7280;
+      --text: #111827;
+      --bg-card: #ffffff;
+    }
+
+    /* ===== Navbar ===== */
+    header {
+      background: var(--bg-card);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+ padding: 15rem 4rem;
+  position: relative;
+  overflow: hidden;
+
+  /* Gradient background */
+  background: linear-gradient(135deg, #10b981, #6b7280);
+  color: #111827; /* Dark text for readability */
+}
+
+.hero h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #111827; /* Darker heading */
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937; /* Slightly softer dark for paragraph */
+}
+
+.hero .cta-btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: #111827; /* Dark button background */
+  color: #fff; /* White text on button */
+  font-weight: 600;
+  border-radius: 25px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero .cta-btn:hover {
+  background: #10b981; /* Green hover */
+  color: #fff;
+}
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      50% {
+        transform: translate(50px, -30px) rotate(180deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    /* ===== Section Fade-in ===== */
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about img {
+      width: 380px;
+      border-radius: 20px;
+      border: 2px solid #d1d5db;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .about img:hover {
+      transform: scale(1.05);
+    }
+
+    .about .bio {
+      flex: 1;
+      font-size: 1.05rem;
+      color: #374151;
+    }
+
+    .about .bio h2 {
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .about .bio p {
+      line-height: 1.6;
+    }
+
+    /* ===== Projects Section ===== */
+    .projects {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .projects h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .project-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-card h3 {
+      margin: 1rem;
+      color: var(--secondary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .project-card .tech {
+      margin: 0 1rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      margin: 0 1rem 1rem;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .project-card a {
+      display: block;
+      margin: 0 1rem 1rem;
+      padding: 0.5rem;
+      text-align: center;
+      background: var(--secondary);
+      color: #fff;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .project-card a:hover {
+      background: var(--primary);
+    }
+
+    /* ===== Skills Section ===== */
+    .skills {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .skills h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .skill {
+      width: 150px;
+    }
+
+    .skill span {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .skill-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      background: var(--secondary);
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact {
+      padding: 4rem 2rem;
+      background: #f3f4f6;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--secondary);
+      color: #fff;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .contact a:hover {
+      background: var(--primary);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ===== Responsive Navbar & Sections ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100vh;
+        background: var(--bg-card);
+        flex-direction: column;
+        width: 250px;
+        padding: 4rem 1.5rem;
+        gap: 1.5rem;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .about .bio {
+        flex: unset;
+        margin-top: 1.5rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .skill-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .skill {
+        width: 80%;
+      }
+
+      .contact a {
+        display: block;
+        width: 80%;
+        margin: 0.5rem auto;
+        padding: 0.7rem 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>Amber.com</h1>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <nav id="navbar">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <h2>Hello, I'm Amber</h2>
+    <p>Web Developer | Front-End Enthusiast</p>
+    <a href="#projects" class="cta-btn">View My Work</a>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+      <h2>About Me</h2>
+      <p>
+        Passionate About Creating Impactful Websites and Applications.<br><br>
+        I’m Amber Ighavodha. I’ve always loved designing and building things that solve real problems, which inspired me to dive into web development and design.<br><br>
+        Today, I focus on crafting clean, responsive, and user-friendly websites. Beyond coding, I’m driven by creativity and innovation, aiming to turn ideas into practical solutions.<br><br>
+        My goal is to use technology to make life easier and more enjoyable — creating tools, and opportunities that leave a lasting impression.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="images/Screenshot 2026-03-02 143648.png" alt="DoDo Pizza Screenshot">
+        <h3>DoDo Pizza</h3>
+        <div class="tech">HTML, CSS</div>
+        <p>A professional website built using HTML and CSS.</p>
+        <a href="https://do-do-pizza.vercel.app" target="_blank">View Live</a>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Screenshot 2026-03-02 143935.png" alt="ApTech Website Screenshot">
+        <h3>ApTech Website</h3>
+        <div class="tech">HTML, CSS</div>
+        <p>A website built using only HTML and CSS.</p>
+        <a href="https://aptech-two.vercel.app" target="_blank">View Live</a>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Screenshot 2026-03-04 124902.png" alt="Netflix Clone Screenshot">
+        <h3>Netflix Website</h3>
+        <div class="tech">HTML, CSS, JavaScript</div>
+        <p>A Netflix-style clone with dynamic content and interactive UI.</p>
+        <a href="https://netflix-website-csr7.vercel.app" target="_blank">View Live</a>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Screenshot 2026-03-04 125324.png" alt="To-Do List Website Screenshot">
+        <h3>To-Do List</h3>
+        <div class="tech">HTML, CSS, JavaScript</div>
+        <p>An interactive To-Do List app that helps users manage tasks efficiently.</p>
+        <a href="https://to-do-list-website-three.vercel.app" target="_blank">View Live</a>
+      </div>
+
+      <div class="project-card">
+  <img src="images/Screenshot 2026-03-10 001345.png" alt="YouTube Clone Screenshot">
+  <h3>YouTube Clone</h3>
+  <div class="tech">HTML, CSS, JavaScript</div>
+  <p>A fully responsive YouTube clone with videos, shorts, dark mode, and sidebar toggle.</p>
+  <a href="https://youtube-website-three.vercel.app" target="_blank">View Live</a>
+</div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skill-list">
+      <div class="skill">
+        <span>HTML</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 90%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>CSS</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 85%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 75%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>React</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 70%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Git</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 80%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <a href="mailto:ighavodhaamber50@gmail.com">Email Me</a>
+    <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a>
+    <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Amber | All Rights Reserved
+  </footer>
+
+  <!-- Scroll Reveal + Hamburger Script -->
+  <script>
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+    projectCards.forEach(card => observer.observe(card));
+
+    // Hamburger toggle
+    const toggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+
+    toggle.addEventListener("click", () => {
+      navbar.classList.toggle("active");
+    });
+
+    document.querySelectorAll("#navbar a").forEach(link => {
+      link.addEventListener("click", () => {
+        navbar.classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+
+</html>
