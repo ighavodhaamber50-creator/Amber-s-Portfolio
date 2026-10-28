@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amber's Portfolio</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Reset & Fonts ===== */
     * {
       margin: 0;
       padding: 0;
@@ -30,7 +28,6 @@
       color: inherit;
     }
 
-    /* ===== Colors ===== */
     :root {
       --primary: #1f2937;
       --secondary: #10b981;
@@ -39,7 +36,6 @@
       --bg-card: #ffffff;
     }
 
-    /* ===== Navbar ===== */
     header {
       background: var(--bg-card);
       padding: 1rem 2rem;
@@ -75,23 +71,20 @@
       color: var(--secondary);
     }
 
-    /* Hamburger */
     .menu-toggle {
       display: none;
       font-size: 1.8rem;
       cursor: pointer;
     }
 
-    /* ===== Hero Section ===== */
 .hero {
   text-align: center;
  padding: 15rem 4rem;
   position: relative;
   overflow: hidden;
 
-  /* Gradient background */
   background: linear-gradient(135deg, #10b981, #6b7280);
-  color: #111827; /* Dark text for readability */
+  color: #111827; 
 }
 
 .hero h2 {
@@ -99,27 +92,27 @@
   font-weight: 800;
   font-size: 2.8rem;
   margin-bottom: 1rem;
-  color: #111827; /* Darker heading */
+  color: #111827; 
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: #1f2937; /* Slightly softer dark for paragraph */
+  color: #1f2937; 
 }
 
 .hero .cta-btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background: #111827; /* Dark button background */
-  color: #fff; /* White text on button */
+  background: #111827; 
+  color: #fff; 
   font-weight: 600;
   border-radius: 25px;
   transition: background 0.3s, color 0.3s;
 }
 
 .hero .cta-btn:hover {
-  background: #10b981; /* Green hover */
+  background: #10b981; 
   color: #fff;
 }
 
@@ -137,7 +130,6 @@
       }
     }
 
-    /* ===== Section Fade-in ===== */
     section {
       opacity: 0;
       transform: translateY(20px);
@@ -149,7 +141,6 @@
       transform: translateY(0);
     }
 
-    /* ===== About Section ===== */
     .about {
       display: flex;
       flex-wrap: wrap;
@@ -189,7 +180,6 @@
       line-height: 1.6;
     }
 
-    /* ===== Projects Section ===== */
     .projects {
       padding: 4rem 2rem;
       max-width: 1200px;
@@ -267,38 +257,51 @@
       background: var(--primary);
     }
 
-    /* ===== Skills Section ===== */
-    ```css
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
+    .skills {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.skill {
-    width: auto;
-    padding: 0.8rem 1.2rem;
-    background: var(--bg-card);
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+    .skills h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-.skill:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
 
-.skill span {
-    display: block;
-    font-weight: 500;
-    color: var(--primary);
-}
-```
+    .skill {
+      width: 150px;
+    }
 
-    /* ===== Contact Section ===== */
+    .skill span {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .skill-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      background: var(--secondary);
+      height: 100%;
+      border-radius: 10px;
+    }
+
     .contact {
       padding: 4rem 2rem;
       background: #f3f4f6;
@@ -327,7 +330,6 @@
       background: var(--primary);
     }
 
-    /* ===== Footer ===== */
     footer {
       text-align: center;
       padding: 1rem;
@@ -335,7 +337,6 @@
       color: #fff;
     }
 
-    /* ===== Responsive Navbar & Sections ===== */
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -402,7 +403,6 @@
 
 <body>
 
-  <!-- Navbar -->
   <header>
     <h1>Amber.com</h1>
     <div class="menu-toggle" id="menu-toggle">☰</div>
@@ -414,14 +414,12 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero" id="hero">
     <h2>Hello, I'm Amber</h2>
     <p>Web Developer | Front-End Enthusiast</p>
     <a href="#projects" class="cta-btn">View My Work</a>
   </section>
 
-  <!-- About -->
   <section class="about" id="about">
       <h2>About Me</h2>
       <p>
@@ -433,7 +431,6 @@
     </div>
   </section>
 
-  <!-- Projects -->
   <section class="projects" id="projects">
     <h2>My Projects</h2>
     <div class="project-grid">
@@ -479,76 +476,81 @@
     </div>
   </section>
 
-```html
-<!-- Skills Section -->
-<section class="skills" id="skills">
+  <section class="skills" id="skills">
     <h2>My Skills</h2>
-
     <div class="skill-list">
-
-        <div class="skill">
-            <span>HTML</span>
+      <div class="skill">
+        <span>HTML</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 90%"></div>
         </div>
-
-        <div class="skill">
-            <span>CSS</span>
+      </div>
+      <div class="skill">
+        <span>CSS</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 85%"></div>
         </div>
-
-        <div class="skill">
-            <span>JavaScript</span>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 75%"></div>
         </div>
-
-        <div class="skill">
-            <span>React.js</span>
+      </div>
+      <div class="skill">
+        <span>React</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 70%"></div>
         </div>
-
-        <div class="skill">
-            <span>TypeScript</span>
+      </div>
+      <div class="skill">
+        <span>Git and GitHub</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 80%"></div>
         </div>
+      </div>
 
-        <div class="skill">
-            <span>Python</span>
+      <div class="skill">
+        <span>TypeScript</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 80%"></div>
         </div>
+      </div>
 
-        <div class="skill">
-            <span>Django</span>
+      <div class="skill">
+        <span>Python</span>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 80%"></div>
         </div>
-
-        <div class="skill">
-            <span>Git &amp; GitHub</span>
-        </div>
-
+      </div>
     </div>
-</section>
-```
 
-
-```html
-<!-- Contact Section -->
+ <!-- Contact Section -->
 <section class="contact" id="contact">
     <h2>Contact Me</h2>
 
-    <a href="mailto:ighavodhaamber7@gmail.com">Email Me</a>
+    <a href="mailto:ighavodhaamber7@gmail.com">
+        Email Me
+    </a>
 
     <a href="https://www.linkedin.com/in/amber-ighavodha-2562a32a7/"
        target="_blank"
-       rel="noopener noreferrer">LinkedIn</a>
+       rel="noopener noreferrer">
+        LinkedIn
+    </a>
 
     <a href="https://github.com/ighavodhaamber50-creator"
        target="_blank"
-       rel="noopener noreferrer">GitHub</a>
+       rel="noopener noreferrer">
+        GitHub
+    </a>
 </section>
-```
 
-
-  <!-- Footer -->
   <footer>
     &copy; 2026 Amber | All Rights Reserved
   </footer>
 
-  <!-- Scroll Reveal + Hamburger Script -->
   <script>
-    // Scroll reveal
     const sections = document.querySelectorAll('section');
     const projectCards = document.querySelectorAll('.project-card');
 
